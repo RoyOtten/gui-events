@@ -1,61 +1,13 @@
-import tkinter
+from cgitb import text
+import tkinter as tk 
 
+mainView = tk.Tk()
+mainView.geometry("340x180")
+mainView.configure(bg='gray')
 
-Number = 0
-OrginColor = 'gray'
-def Add():
-    global OrginColor
-    global Number
-    Number += 1
-    numberLabel['text'] = Number
-    if Number > 0:
-        root['background'] = 'green'
-        OrginColor = 'green'
-    elif Number < 0:
-        root['background'] = 'red'
-        OrginColor = 'red'
-    else:
-        root['background'] = 'gray'
-        OrginColor = 'gray'
+lbl = tk.label(text='hello')
+lbl.pack()
 
-def Sub():
-    global OrginColor
-    global Number
-    Number -= 1
-    numberLabel['text'] = Number
-    if Number > 0:
-        root['background'] = 'green'
-        OrginColor = 'green'
-    elif Number < 0:
-        root['background'] = 'red'
-        OrginColor = 'red'
-    else:
-        root['background'] = 'gray'
-        OrginColor = 'gray'
+mainView.bind("<Control>", lambda event: print(event))
 
-
-def ColorChange(event):
-    global OrginColor
-    root["background"] = 'yellow'
-def ColorChange1(event):
-    root["background"] = OrginColor
-
-root = tkinter.Tk()
-root.configure(bg='gray')
-root.geometry('200x300')
-
-buttonUp = tkinter.Button(root)
-buttonUp.configure(text= 'Up', command=Add)
-buttonUp.pack(padx=45,pady=30,expand=True)
-
-buttonDown = tkinter.Button(root)
-buttonDown.configure(text= 'Down', command=Sub)
-buttonDown.pack(padx=50,pady=50,expand=True)
-
-numberLabel = tkinter.Label(root, text = Number)
-numberLabel.pack(ipadx=20,ipady=20)
-
-root.bind("<Enter>",ColorChange)
-root.bind("<Leave>",ColorChange1)
-
-root.mainloop()
+mainView.mainloop()
